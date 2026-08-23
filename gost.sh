@@ -156,24 +156,24 @@ function Restart_ct() {
 function read_protocol() {
   echo -e "请问您要设置哪种功能: "
   echo -e "-----------------------------------"
-  echo -e "[1] tcp+udp流量转发, 不加密"
+  echo -e "[1] tcp + udp 流量转发, 不加密"
   echo -e "说明: 一般设置在国内中转机上"
   echo -e "-----------------------------------"
   echo -e "[2] 加密隧道流量转发"
   echo -e "说明: 用于转发原本加密等级较低的流量, 一般设置在国内中转机上"
   echo -e "     选择此协议意味着你还有一台机器用于接收此加密流量, 之后须在那台机器上配置协议[3]进行对接"
   echo -e "-----------------------------------"
-  echo -e "[3] 解密由gost传输而来的流量并转发"
-  echo -e "说明: 对于经由gost加密中转的流量, 通过此选项进行解密并转发给本机的代理服务端口或转发给其他远程机器"
+  echo -e "[3] 解密由 gost 传输而来的流量并转发"
+  echo -e "说明: 对于经由 gost 加密中转的流量, 通过此选项进行解密并转发给本机的代理服务端口或转发给其他远程机器"
   echo -e "      一般设置在用于接收中转流量的国外机器上"
   echo -e "-----------------------------------"
-  echo -e "[4] 一键安装ss/socks5/http代理"
-  echo -e "说明: 使用gost内置的代理协议，轻量且易于管理"
+  echo -e "[4] 一键安装 ss/socks5/http 代理"
+  echo -e "说明: 使用 gost 内置的代理协议，轻量且易于管理"
   echo -e "-----------------------------------"
   echo -e "[5] 进阶：多落地均衡负载"
   echo -e "说明: 支持各种加密方式的简单均衡负载"
   echo -e "-----------------------------------"
-  echo -e "[6] 进阶：转发CDN自选节点"
+  echo -e "[6] 进阶：转发 CDN 自选节点"
   echo -e "说明: 只需在中转机设置"
   echo -e "-----------------------------------"
   read -p "请选择: " numprotocol
@@ -198,13 +198,13 @@ function read_protocol() {
 function read_s_port() {
   if [ "$flag_a" == "ss" ]; then
     echo -e "-----------------------------------"
-    read -p "请输入ss密码: " flag_b
+    read -p "请输入 ss 密码: " flag_b
   elif [ "$flag_a" == "socks" ]; then
     echo -e "-----------------------------------"
-    read -p "请输入socks密码: " flag_b
+    read -p "请输入 socks 密码: " flag_b
   elif [ "$flag_a" == "http" ]; then
     echo -e "-----------------------------------"
-    read -p "请输入http密码: " flag_b
+    read -p "请输入 http 密码: " flag_b
   else
     echo -e "------------------------------------------------------------------"
     echo -e "请问你要将本机哪个端口接收到的流量进行转发?"
@@ -214,7 +214,7 @@ function read_s_port() {
 function read_d_ip() {
   if [ "$flag_a" == "ss" ]; then
     echo -e "------------------------------------------------------------------"
-    echo -e "请问您要设置的ss加密(仅提供常用的几种): "
+    echo -e "请问您要设置的 ss 加密(仅提供常用的几种): "
     echo -e "-----------------------------------"
     echo -e "[1] aes-256-gcm"
     echo -e "[2] aes-256-cfb"
@@ -243,17 +243,17 @@ function read_d_ip() {
     fi
   elif [ "$flag_a" == "socks" ]; then
     echo -e "-----------------------------------"
-    read -p "请输入socks用户名: " flag_c
+    read -p "请输入 socks 用户名: " flag_c
   elif [ "$flag_a" == "http" ]; then
     echo -e "-----------------------------------"
-    read -p "请输入http用户名: " flag_c
+    read -p "请输入 http 用户名: " flag_c
   elif [[ "$flag_a" == "peer"* ]]; then
     echo -e "------------------------------------------------------------------"
     echo -e "请输入落地列表文件名"
-    read -e -p "自定义但不同配置应不重复，不用输入后缀，例如ips1、iplist2: " flag_c
+    read -e -p "自定义但不同配置应不重复，不用输入后缀，例如 ips1、iplist2: " flag_c
     touch $flag_c.txt
     echo -e "------------------------------------------------------------------"
-    echo -e "请依次输入你要均衡负载的落地ip与端口"
+    echo -e "请依次输入你要均衡负载的落地 ip 与端口"
     while true; do
       echo -e "请问你要将本机从${flag_b}接收到的流量转发向的IP或域名?"
       read -p "请输入: " peer_ip
@@ -264,7 +264,7 @@ function read_d_ip() {
       [[ -z ${addyn} ]] && addyn="y"
       if [[ ${addyn} == [Nn] ]]; then
         echo -e "------------------------------------------------------------------"
-        echo -e "已在root目录创建$flag_c.txt，您可以随时编辑该文件修改落地信息，重启gost即可生效"
+        echo -e "已在 root 目录创建$flag_c.txt，您可以随时编辑该文件修改落地信息，重启gost即可生效"
         echo -e "------------------------------------------------------------------"
         break
       else
@@ -294,11 +294,11 @@ function read_d_ip() {
     fi
   else
     echo -e "------------------------------------------------------------------"
-    echo -e "请问你要将本机从${flag_b}接收到的流量转发向哪个IP或域名?"
-    echo -e "注: IP既可以是[远程机器/当前机器]的公网IP, 也可是以本机本地回环IP(即127.0.0.1)"
-    echo -e "具体IP地址的填写, 取决于接收该流量的服务正在监听的IP"
+    echo -e "请问你要将本机从${flag_b}接收到的流量转发向哪个 IP 或域名?"
+    echo -e "注: IP 既可以是[远程机器/当前机器]的公网 IP, 也可是以本机本地回环 IP(即127.0.0.1)"
+    echo -e "具体 IP 地址的填写, 取决于接收该流量的服务正在监听的 IP"
     if [[ ${is_cert} == [Yy] ]]; then
-      echo -e "注意: 落地机开启自定义tls证书，务必填写${Red_font_prefix}域名${Font_color_suffix}"
+      echo -e "注意: 落地机开启自定义 tls 证书，务必填写${Red_font_prefix}域名${Font_color_suffix}"
     fi
     read -p "请输入: " flag_c
   fi
@@ -306,15 +306,15 @@ function read_d_ip() {
 function read_d_port() {
   if [ "$flag_a" == "ss" ]; then
     echo -e "------------------------------------------------------------------"
-    echo -e "请问你要设置ss代理服务的端口?"
+    echo -e "请问你要设置 ss 代理服务的端口?"
     read -p "请输入: " flag_d
   elif [ "$flag_a" == "socks" ]; then
     echo -e "------------------------------------------------------------------"
-    echo -e "请问你要设置socks代理服务的端口?"
+    echo -e "请问你要设置 socks 代理服务的端口?"
     read -p "请输入: " flag_d
   elif [ "$flag_a" == "http" ]; then
     echo -e "------------------------------------------------------------------"
-    echo -e "请问你要设置http代理服务的端口?"
+    echo -e "请问你要设置 http 代理服务的端口?"
     read -p "请输入: " flag_d
   elif [[ "$flag_a" == "peer"* ]]; then
     echo -e "------------------------------------------------------------------"
@@ -393,23 +393,23 @@ function multiconflast() {
 function encrypt() {
   echo -e "请问您要设置的转发传输类型: "
   echo -e "-----------------------------------"
-  echo -e "[1] tls隧道"
-  echo -e "[2] ws隧道"
-  echo -e "[3] wss隧道"
-  echo -e "注意: 同一则转发，中转与落地传输类型必须对应！本脚本默认开启tcp+udp"
+  echo -e "[1] tls 隧道"
+  echo -e "[2] ws 隧道"
+  echo -e "[3] wss 隧道"
+  echo -e "注意: 同一则转发，中转与落地传输类型必须对应！本脚本默认开启 tcp + udp"
   echo -e "-----------------------------------"
   read -p "请选择转发传输类型: " numencrypt
 
   if [ "$numencrypt" == "1" ]; then
     flag_a="encrypttls"
     echo -e "注意: 选择 是 将针对落地的自定义证书开启证书校验保证安全性，稍后落地机务必填写${Red_font_prefix}域名${Font_color_suffix}"
-    read -e -p "落地机是否开启了自定义tls证书？[y/n]:" is_cert
+    read -e -p "落地机是否开启了自定义 tls 证书？[y/n]:" is_cert
   elif [ "$numencrypt" == "2" ]; then
     flag_a="encryptws"
   elif [ "$numencrypt" == "3" ]; then
     flag_a="encryptwss"
     echo -e "注意: 选择 是 将针对落地的自定义证书开启证书校验保证安全性，稍后落地机务必填写${Red_font_prefix}域名${Font_color_suffix}"
-    read -e -p "落地机是否开启了自定义tls证书？[y/n]:" is_cert
+    read -e -p "落地机是否开启了自定义 tls 证书？[y/n]:" is_cert
   else
     echo "type error, please try again"
     exit
@@ -419,12 +419,12 @@ function enpeer() {
   echo -e "请问您要设置的均衡负载传输类型: "
   echo -e "-----------------------------------"
   echo -e "[1] 不加密转发"
-  echo -e "[2] tls隧道"
-  echo -e "[3] ws隧道"
-  echo -e "[4] wss隧道"
+  echo -e "[2] tls 隧道"
+  echo -e "[3] ws 隧道"
+  echo -e "[4] wss 隧道"
   echo -e "注意: 同一则转发，中转与落地传输类型必须对应！本脚本默认同一配置的传输类型相同"
   echo -e "此脚本仅支持简单型均衡负载，具体可参考官方文档"
-  echo -e "gost均衡负载官方文档：https://docs.ginuerzh.xyz/gost/load-balancing"
+  echo -e "gost 均衡负载官方文档：https://docs.ginuerzh.xyz/gost/load-balancing"
   echo -e "-----------------------------------"
   read -p "请选择转发传输类型: " numpeer
 
@@ -443,15 +443,15 @@ function enpeer() {
   fi
 }
 function cdn() {
-  echo -e "请问您要设置的CDN传输类型: "
+  echo -e "请问您要设置的 CDN 传输类型: "
   echo -e "-----------------------------------"
   echo -e "[1] 不加密转发"
-  echo -e "[2] ws隧道"
-  echo -e "[3] wss隧道"
+  echo -e "[2] ws 隧道"
+  echo -e "[3] wss 隧道"
   echo -e "注意: 同一则转发，中转与落地传输类型必须对应！"
   echo -e "此功能只需在中转机设置"
   echo -e "-----------------------------------"
-  read -p "请选择CDN转发传输类型: " numcdn
+  read -p "请选择 CDN 转发传输类型: " numcdn
 
   if [ "$numcdn" == "1" ]; then
     flag_a="cdnno"
@@ -466,11 +466,11 @@ function cdn() {
 }
 function cert() {
   echo -e "-----------------------------------"
-  echo -e "[1] ACME一键申请证书"
+  echo -e "[1] ACME 一键申请证书"
   echo -e "[2] 手动上传证书"
   echo -e "-----------------------------------"
-  echo -e "说明: 仅用于落地机配置，默认使用的gost内置的证书可能带来安全问题，使用自定义证书提高安全性"
-  echo -e "     配置后对本机所有tls/wss解密生效，无需再次设置"
+  echo -e "说明: 仅用于落地机配置，默认使用的 gost 内置的证书可能带来安全问题，使用自定义证书提高安全性"
+  echo -e "     配置后对本机所有 tls/wss 解密生效，无需再次设置"
   read -p "请选择证书生成方式: " numcert
 
   if [ "$numcert" == "1" ]; then
@@ -480,12 +480,12 @@ function cert() {
     else
       apt-get install -y socat
     fi
-    read -p "请输入ZeroSSL的账户邮箱(至 zerossl.com 注册即可)：" zeromail
+    read -p "请输入 ZeroSSL 的账户邮箱(至 zerossl.com 注册即可)：" zeromail
     read -p "请输入解析到本机的域名：" domain
     curl https://get.acme.sh | sh
     "$HOME"/.acme.sh/acme.sh --set-default-ca --server zerossl
     "$HOME"/.acme.sh/acme.sh --register-account -m "${zeromail}" --server zerossl
-    echo -e "ACME证书申请程序安装成功"
+    echo -e "ACME 证书申请程序安装成功"
     echo -e "-----------------------------------"
     echo -e "[1] HTTP申请（需要80端口未占用）"
     echo -e "[2] Cloudflare DNS API 申请（需要输入APIKEY）"
@@ -494,13 +494,13 @@ function cert() {
     if [ "$certmethod" == "1" ]; then
       echo -e "请确认本机${Red_font_prefix}80${Font_color_suffix}端口未被占用, 否则会申请失败"
       if "$HOME"/.acme.sh/acme.sh --issue -d "${domain}" --standalone -k ec-256 --force; then
-        echo -e "SSL 证书生成成功，默认申请高安全性的ECC证书"
+        echo -e "SSL 证书生成成功，默认申请高安全性的 ECC 证书"
         if [ ! -d "$HOME/gost_cert" ]; then
           mkdir $HOME/gost_cert
         fi
         if "$HOME"/.acme.sh/acme.sh --installcert -d "${domain}" --fullchainpath $HOME/gost_cert/cert.pem --keypath $HOME/gost_cert/key.pem --ecc --force; then
           echo -e "SSL 证书配置成功，且会自动续签，证书及秘钥位于用户目录下的 ${Red_font_prefix}gost_cert${Font_color_suffix} 目录"
-          echo -e "证书目录名与证书文件名请勿更改; 删除 gost_cert 目录后用脚本重启,即自动启用gost内置证书"
+          echo -e "证书目录名与证书文件名请勿更改; 删除 gost_cert 目录后用脚本重启, 即自动启用 gost 内置证书"
           echo -e "-----------------------------------"
         fi
       else
@@ -508,18 +508,18 @@ function cert() {
         exit 1
       fi
     else
-      read -p "请输入Cloudflare账户邮箱：" cfmail
-      read -p "请输入Cloudflare Global API Key：" cfkey
+      read -p "请输入 Cloudflare 账户邮箱：" cfmail
+      read -p "请输入 Cloudflare Global API Key：" cfkey
       export CF_Key="${cfkey}"
       export CF_Email="${cfmail}"
       if "$HOME"/.acme.sh/acme.sh --issue --dns dns_cf -d "${domain}" --standalone -k ec-256 --force; then
-        echo -e "SSL 证书生成成功，默认申请高安全性的ECC证书"
+        echo -e "SSL 证书生成成功，默认申请高安全性的 ECC 证书"
         if [ ! -d "$HOME/gost_cert" ]; then
           mkdir $HOME/gost_cert
         fi
         if "$HOME"/.acme.sh/acme.sh --installcert -d "${domain}" --fullchainpath $HOME/gost_cert/cert.pem --keypath $HOME/gost_cert/key.pem --ecc --force; then
           echo -e "SSL 证书配置成功，且会自动续签，证书及秘钥位于用户目录下的 ${Red_font_prefix}gost_cert${Font_color_suffix} 目录"
-          echo -e "证书目录名与证书文件名请勿更改; 删除 gost_cert 目录后使用脚本重启, 即重新启用gost内置证书"
+          echo -e "证书目录名与证书文件名请勿更改; 删除 gost_cert 目录后使用脚本重启, 即重新启用 gost 内置证书"
           echo -e "-----------------------------------"
         fi
       else
@@ -533,9 +533,9 @@ function cert() {
       mkdir $HOME/gost_cert
     fi
     echo -e "-----------------------------------"
-    echo -e "已在用户目录建立 ${Red_font_prefix}gost_cert${Font_color_suffix} 目录，请将证书文件 cert.pem 与秘钥文件 key.pem 上传到该目录"
-    echo -e "证书与秘钥文件名必须与上述一致，目录名也请勿更改"
-    echo -e "上传成功后，用脚本重启gost会自动启用，无需再设置; 删除 gost_cert 目录后用脚本重启,即重新启用gost内置证书"
+    echo -e "已在用户目录建立 ${Red_font_prefix}gost_cert${Font_color_suffix} 目录, 请将证书文件 cert.pem 与秘钥文件 key.pem 上传到该目录"
+    echo -e "证书与秘钥文件名必须与上述一致, 目录名也请勿更改"
+    echo -e "上传成功后, 用脚本重启 gost 会自动启用, 无需再设置; 删除 gost_cert 目录后用脚本重启, 即重新启用 gost 内置证书"
     echo -e "-----------------------------------"
   else
     echo "type error, please try again"
@@ -548,7 +548,7 @@ function decrypt() {
   echo -e "[1] tls"
   echo -e "[2] ws"
   echo -e "[3] wss"
-  echo -e "注意: 同一则转发，中转与落地传输类型必须对应！本脚本默认开启tcp+udp"
+  echo -e "注意: 同一则转发，中转与落地传输类型必须对应！本脚本默认开启 tcp + udp"
   echo -e "-----------------------------------"
   read -p "请选择解密传输类型: " numdecrypt
 
@@ -568,7 +568,7 @@ function proxy() {
   echo -e "请问您要设置的代理类型: "
   echo -e "-----------------------------------"
   echo -e "[1] shadowsocks"
-  echo -e "[2] socks5(强烈建议加隧道用于Telegram代理)"
+  echo -e "[2] socks5 (强烈建议加隧道用于 Telegram 代理)"
   echo -e "[3] http"
   echo -e "-----------------------------------"
   read -p "请选择代理类型: " numproxy
@@ -834,15 +834,15 @@ function show_all_conf() {
 
 cron_restart() {
   echo -e "------------------------------------------------------------------"
-  echo -e "gost定时重启任务: "
+  echo -e "gost 定时重启任务: "
   echo -e "-----------------------------------"
-  echo -e "[1] 配置gost定时重启任务"
-  echo -e "[2] 删除gost定时重启任务"
+  echo -e "[1] 配置 gost 定时重启任务"
+  echo -e "[2] 删除 gost 定时重启任务"
   echo -e "-----------------------------------"
   read -p "请选择: " numcron
   if [ "$numcron" == "1" ]; then
     echo -e "------------------------------------------------------------------"
-    echo -e "gost定时重启任务类型: "
+    echo -e "gost 定时重启任务类型: "
     echo -e "-----------------------------------"
     echo -e "[1] 每？小时重启"
     echo -e "[2] 每日？点重启"
@@ -890,17 +890,19 @@ update_sh() {
       echo -e "                 ${Green_font_prefix}当前版本为最新版本！${Font_color_suffix}"
     fi
   else
-    echo -e "                 ${Red_font_prefix}脚本最新版本获取失败，请检查与github的连接！${Font_color_suffix}"
+    echo -e "                 ${Red_font_prefix}脚本最新版本获取失败, 请检查与github的连接！${Font_color_suffix}"
   fi
 }
 
 update_sh
 echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
-  ----------- KANIKIG -----------
-  特性: (1)本脚本采用systemd及gost配置文件对gost进行管理
-        (2)能够在不借助其他工具(如screen)的情况下实现多条转发规则同时生效
-        (3)机器reboot后转发不失效
-  功能: (1)tcp+udp不加密转发, (2)中转机加密转发, (3)落地机解密对接转发
+  ----------- Zalazy -----------
+  特性: (1) 本脚本采用 systemd 及 gost 配置文件对 gost 进行管理
+        (2) 能够在不借助其他工具（如screen）的情况下实现多条转发规则同时生效
+        (3) 机器 reboot 后转发不失效
+  功能: (1) tcp + udp 不加密转发
+        (2) 中转机加密转发
+		(3) 落地机解密对接转发
   帮助文档：https://github.com/KANIKIG/Multi-EasyGost
 
  ${Green_font_prefix}1.${Font_color_suffix} 安装 gost
@@ -911,12 +913,12 @@ echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefi
  ${Green_font_prefix}5.${Font_color_suffix} 停止 gost
  ${Green_font_prefix}6.${Font_color_suffix} 重启 gost
 ————————————
- ${Green_font_prefix}7.${Font_color_suffix} 新增gost转发配置
- ${Green_font_prefix}8.${Font_color_suffix} 查看现有gost配置
- ${Green_font_prefix}9.${Font_color_suffix} 删除一则gost配置
+ ${Green_font_prefix}7.${Font_color_suffix} 新增 gost 转发配置
+ ${Green_font_prefix}8.${Font_color_suffix} 查看现有 gost 配置
+ ${Green_font_prefix}9.${Font_color_suffix} 删除一则 gost 配置
 ————————————
- ${Green_font_prefix}10.${Font_color_suffix} gost定时重启配置
- ${Green_font_prefix}11.${Font_color_suffix} 自定义TLS证书配置
+ ${Green_font_prefix}10.${Font_color_suffix} gost 定时重启配置
+ ${Green_font_prefix}11.${Font_color_suffix} 自定义 TLS 证书配置
 ————————————" && echo
 read -e -p " 请输入数字 [1-9]:" num
 case "$num" in
@@ -945,7 +947,7 @@ case "$num" in
   writeconf
   conflast
   systemctl restart gost
-  echo -e "配置已生效，当前配置如下"
+  echo -e "配置已生效, 当前配置如下"
   echo -e "--------------------------------------------------------"
   show_all_conf
   ;;
@@ -962,7 +964,7 @@ case "$num" in
     writeconf
     conflast
     systemctl restart gost
-    echo -e "配置已删除，服务已重启"
+    echo -e "配置已删除, 服务已重启"
   else
     echo "请输入正确数字"
   fi
