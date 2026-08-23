@@ -16,11 +16,11 @@ wget --no-check-certificate -O gost.sh https://gh-proxy.org/https://raw.githubus
 wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhen/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh
 ```
 
-* 提示：
+### 提示：
 
 再次运行本脚本只需要输入 `bash gost.sh` 回车即可
 
-> 注：由于 gost v2.11.2 功能稳定，此脚本将一直采用该版本，后续不再跟随官方更新
+* 注：由于 gost v2.11.2 功能稳定，此脚本将一直采用该版本，后续不再跟随官方更新
 
 ## 支持环境
 
