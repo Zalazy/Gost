@@ -7,7 +7,7 @@
 ### 国内机：
 
 ```bash
-wget --no-check-certificate -O gost.sh https://gh-proxy.org/https://raw.githubusercontent.com/Zalazy/Gost/refs/heads/main/gost.sh && chmod +x gost.sh && ./gost.sh
+wget --no-check-certificate -O gost.sh https://ghfast.top/https://raw.githubusercontent.com/Zalazy/Gost/refs/heads/main/gost.sh && chmod +x gost.sh && ./gost.sh
 ```
 
 ### 国外机：
