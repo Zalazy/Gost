@@ -781,7 +781,7 @@ function writeconf() {
 function show_all_conf() {
   echo -e "                       GOST 配置                         "
   echo -e "--------------------------------------------------------"
-  echo -e "序号\t  |方法\t    |本地端口\t    |目的地地址：目的地端口\t  "
+  echo -e "序号\t|方法\t|本地端口\t|目的地地址：目的地端口\t"
   echo -e "--------------------------------------------------------"
 
   count_line=$(awk 'END{print NR}' $raw_conf_path)
