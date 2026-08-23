@@ -779,8 +779,8 @@ function writeconf() {
   done
 }
 function show_all_conf() {
-  echo -e "                       GOST 配置                         "
-  echo -e "--------------------------------------------------------"
+  echo -e "                     当前 GOST 配置                     "
+  echo -e "-------------------------------------------------------"
   echo -e " 序号\t | 方法\t | 本地端口\t | 目标地址：目标端口\t "
   echo -e "--------------------------------------------------------"
 
@@ -790,44 +790,44 @@ function show_all_conf() {
     eachconf_retrieve
 
     if [ "$is_encrypt" == "nonencrypt" ]; then
-      str="不加密中转"
+      str=" 不加密中转 "
     elif [ "$is_encrypt" == "encrypttls" ]; then
-      str=" tls隧道 "
+      str=" tls 隧道 "
     elif [ "$is_encrypt" == "encryptws" ]; then
-      str="  ws隧道 "
+      str=" ws 隧道 "
     elif [ "$is_encrypt" == "encryptwss" ]; then
-      str=" wss隧道 "
+      str=" wss 隧道 "
     elif [ "$is_encrypt" == "peerno" ]; then
       str=" 不加密均衡负载 "
     elif [ "$is_encrypt" == "peertls" ]; then
-      str=" tls隧道均衡负载 "
+      str=" tls 隧道均衡负载 "
     elif [ "$is_encrypt" == "peerws" ]; then
-      str="  ws隧道均衡负载 "
+      str=" ws 隧道均衡负载 "
     elif [ "$is_encrypt" == "peerwss" ]; then
-      str=" wss隧道均衡负载 "
+      str=" wss 隧道均衡负载 "
     elif [ "$is_encrypt" == "decrypttls" ]; then
-      str=" tls解密 "
+      str=" tls 解密 "
     elif [ "$is_encrypt" == "decryptws" ]; then
-      str="  ws解密 "
+      str=" ws 解密 "
     elif [ "$is_encrypt" == "decryptwss" ]; then
-      str=" wss解密 "
+      str=" wss 解密 "
     elif [ "$is_encrypt" == "ss" ]; then
-      str="   ss   "
+      str=" ss "
     elif [ "$is_encrypt" == "socks" ]; then
       str=" socks5 "
     elif [ "$is_encrypt" == "http" ]; then
       str=" http "
     elif [ "$is_encrypt" == "cdnno" ]; then
-      str="不加密转发CDN"
+      str=" 不加密转发 CDN "
     elif [ "$is_encrypt" == "cdnws" ]; then
-      str="ws隧道转发CDN"
+      str=" ws 隧道转发 CDN "
     elif [ "$is_encrypt" == "cdnwss" ]; then
-      str="wss隧道转发CDN"
+      str=" wss 隧道转发 CDN "
     else
       str=""
     fi
 
-    echo -e " $i  |$str  |$s_port\t|$d_ip:$d_port"
+    echo -e " $i\t | $str\t | $s_port\t | $d_ip:$d_port\t "
     echo -e "--------------------------------------------------------"
   done
 }
