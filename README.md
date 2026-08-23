@@ -30,15 +30,15 @@ wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhe
 - 在不借助其他工具 (如 screen) 的情况下实现多条转发规则同时生效
 - 机器 reboot 后转发不失效
 - 支持传输类型：
- - tcp + udp 不加密转发
- - relay + tls 加密
+  - tcp + udp 不加密转发
+  - relay + tls 加密
 
 ### 此脚本新增功能
 
 - 增加了传输类型选择功能
 - 新支持传输类型
- - relay + ws
- - relay + wss
+  - relay + ws
+  - relay + wss
 - 落地机一键创建 ss/socks5/http 代理 (gost内置)
 - 支持多传输类型的多落地简单型均衡负载
 - 简单创建或删除 gost 定时重启任务
