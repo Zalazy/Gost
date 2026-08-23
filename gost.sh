@@ -779,9 +779,9 @@ function writeconf() {
   done
 }
 function show_all_conf() {
-  echo -e "                      GOST 配置                        "
+  echo -e "                       GOST 配置                         "
   echo -e "--------------------------------------------------------"
-  echo -e "序号|方法\t    |本地端口\t|目的地地址:目的地端口"
+  echo -e "序号\t  |方法\t    |本地端口\t    |目的地地址：目的地端口\t  "
   echo -e "--------------------------------------------------------"
 
   count_line=$(awk 'END{print NR}' $raw_conf_path)
@@ -895,7 +895,7 @@ update_sh() {
 }
 
 update_sh
-echo -e "\033[1;33m作者：Zalazy  |  Github：https://github.com/Zalazy/Gost\033[0m"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
+echo -e "\033[1;33m作者：Zalazy | Github：https://github.com/Zalazy/Gost\033[0m"
 
   特性: (1) 本脚本采用 systemd 及 gost 配置文件对 gost 进行管理
         (2) 能够在不借助其他工具（如screen）的情况下实现多条转发规则同时生效
