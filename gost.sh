@@ -902,7 +902,7 @@ echo && echo -e "GOST 一键安装配置脚本"${Red_font_prefix}[${shell_versio
         (3) 机器 reboot 后转发不失效
   功能: (1) tcp + udp 不加密转发
         (2) 中转机加密转发
-	(3) 落地机解密对接转发
+        (3) 落地机解密对接转发
   帮助文档：https://github.com/KANIKIG/Multi-EasyGost
 
  ${Green_font_prefix}1.${Font_color_suffix} 安装 gost
