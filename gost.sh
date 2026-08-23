@@ -895,7 +895,7 @@ update_sh() {
 }
 
 update_sh
-echo -e "\033[1;33m作者：Zalazy | Github：https://github.com/Zalazy/Gost\033[0m"
+echo -e "\033[1;33m作者：Zalazy | Github：https://github.com/Zalazy/Gost\033[0m"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
 
   特性: (1) 本脚本采用 systemd 及 gost 配置文件对 gost 进行管理
         (2) 能够在不借助其他工具（如screen）的情况下实现多条转发规则同时生效
