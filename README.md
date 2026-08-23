@@ -27,7 +27,7 @@ wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhe
 ### 原脚本功能
 
 - 实现了 systemd 及 gost 配置文件对 gost 进行管理
-- 在不借助其他工具 (如 screen) 的情况下实现多条转发规则同时生效
+- 在不借助其他工具（如 screen）的情况下实现多条转发规则同时生效
 - 机器 reboot 后转发不失效
 - 支持传输类型：
   - tcp + udp 不加密转发
@@ -39,7 +39,7 @@ wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhe
 - 新支持传输类型
   - relay + ws
   - relay + wss
-- 落地机一键创建 ss/socks5/http 代理 (gost内置)
+- 落地机一键创建 ss/socks5/http 代理（gost内置）
 - 支持多传输类型的多落地简单型均衡负载
 - 简单创建或删除 gost 定时重启任务
 - 脚本自动检查更新
