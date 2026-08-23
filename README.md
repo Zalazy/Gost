@@ -13,7 +13,7 @@ wget --no-check-certificate -O gost.sh https://gh-proxy.org/https://raw.githubus
 ### 国外机：
 
 ```bash
-wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhen/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh
+wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh
 ```
 
 ### 提示：
