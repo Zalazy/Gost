@@ -9,7 +9,7 @@ raw_conf_path="/etc/gost/rawconf"
 function checknew() {
   checknew=$(gost -V 2>&1 | awk '{print $2}')
   # check_new_ver
-  echo "你的gost版本为:""$checknew"""
+  echo "你的 gost 版本为:""$checknew"""
   echo -n 是否更新\(y/n\)\:
   read checknewnum
   if test $checknewnum = "y"; then
@@ -895,7 +895,7 @@ update_sh() {
 }
 
 update_sh
-echo && echo -e "GOST 一键安装配置脚本"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
+echo -e "\033[1;33m作者：Zalazy  |  Github：https://github.com/Zalazy/Gost\033[0m"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
 
   特性: (1) 本脚本采用 systemd 及 gost 配置文件对 gost 进行管理
         (2) 能够在不借助其他工具（如screen）的情况下实现多条转发规则同时生效
