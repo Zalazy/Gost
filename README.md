@@ -22,19 +22,26 @@ wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/huawuhe
 
 * 注：由于 gost v2.11.2 功能稳定，此脚本将一直采用该版本，后续不再跟随官方更新
 
-## 支持环境
+## 功能
 
-| 项目 | 要求 |
-| --- | --- |
-| 最低支持系统 | Ubuntu 24.04+ / Debian 12+ |
-| 推荐系统 | Ubuntu 24.04+ / Debian 12+ |
-| 包管理器 | `apt-get` |
-| 架构 | `x86_64` / `aarch64` |
-| 引导方式 | 建议使用 GRUB |
-| 使用场景 | VPS / 云服务器 / 独立服务器 |
+### 原脚本功能
 
-不建议在树莓派、NanoPi 等依赖 U-Boot 或厂商定制内核链路的设备上使用。此类设备的内核安装和启动流程通常与通用 Debian/Ubuntu VPS 不一致。
+- 实现了systemd及gost配置文件对gost进行管理
+- 在不借助其他工具(如screen)的情况下实现多条转发规则同时生效
+- 机器reboot后转发不失效
+- 支持传输类型：
+  - tcp+udp不加密转发
+  -  relay+tls加密
 
-Debian testing/unstable 如果缺少 `VERSION_ID`，脚本会按 `VERSION_CODENAME` 识别 `bookworm`、`trixie`、`forky` 和 `sid`。Alpine Linux 暂不支持安装本项目内核包，因为当前 release 产物是 `.deb`，安装和引导流程依赖 Debian/Ubuntu 的包管理与内核安装链路。
+### 此脚本新增功能
 
-本项目当前内核主线为 Linux 7.x。安装内核时脚本会按最低支持系统拦截过旧环境，避免因用户态、initramfs 或引导链路过旧导致启动失败或 kernel panic。推荐系统是更稳妥的部署选择；旧系统仍可使用状态检查、网络调优、清空优化和卸载功能。
+- 增加了传输类型选择功能
+* 新支持传输类型
+  - relay+ws
+  - relay+wss
+- 落地机一键创建ss/socks5/http代理 (gost内置)
+- 支持多传输类型的多落地简单型均衡负载
+- 简单创建或删除gost定时重启任务
+- 脚本自动检查更新
+- 转发CDN自选节点ip
+- 支持自定义tls证书，落地可一键申请证书，中转可开启证书校验
